@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transexpress</title>
+  <!-- Bootstrap CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="../css/custom-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./loads-shipped.css">
+  <link href="../fonts/stylesheet.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="adminWrapper">
+    <div class="topHeader">
+      <div class="toggleNav d-block d-xl-none me-3">
+        <span onclick="openNav()"><img src="images/menu_black.png" alt="" width="28" /></span>
+      </div>
+      <div class="topHeaderLeft">
+        <a href="index.html"><img width="130" class="me-2" src="../images/logo-orange.png" alt="" /></a>
+        <form class="topSearch" action="/action_page.php">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <input type="text" class="form-control" placeholder="Search.." name="search2" />
+        </form>
+      </div>
+      <div class="topHeaderCenter">
+        <p>
+          <img src="../images/building.png" alt="building-icon" /> HBSN DBA
+          hbsn
+        </p>
+      </div>
+      <div class="topHeaderRight">
+        <p><img src="../images/setting.png" alt="setting-icon" /></p>
+        <div class="user">
+          <p>
+            <span>Hello Olivier SAGNA</span>
+            <img src="../images/user01.png" alt="user-img" />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="leftMenu" id="mobileNav">
+      <span class="closeBtn d-block d-xl-none" onclick="closeNav()"><img src="../images/close.png" alt=""
+          width="22" /></span>
+      <div class="addNewBtn">
+        <button type="button" class="btn btn-primary">Add New +</button>
+      </div>
+      <ul>
+        <li><a class="dispatcheActive" href="#"> Dispatches </a></li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> All shipments
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Unassigned
+            Dispatches
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Dispatches
+            assigned
+          </a>
+        </li>
+        <li>
+          <a class="active" href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Active
+            dispatches
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Shipments
+            delivered
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Shipments
+            without regulations
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../images/arrow.png" alt="arrow-icon" /> Canceled
+            shipments
+          </a>
+        </li>
+        <li><a href="#"> Shipping Schedule </a></li>
+      </ul>
+    </div>
+    <div class="rightWrapper">
+      <div class="rightOuter">
+        <div class="rightHeader">
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a class="active" href="#">Loading</a></li>
+            <li><a href="#">Dispatche</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Stock Managment</a></li>
+            <li><a href="#">Users Managment</a></li>
+          </ul>
+        </div>
+
+        <div class="rightContent">
+          <h1 class="pageTitle">
+            HBSN (LOAD-10001) Dispatch <span class="bookTag">Dispatch</span>
+          </h1>
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="sommaire-tab" data-bs-toggle="tab" data-bs-target="#sommaire"
+                type="button" role="tab" aria-controls="sommaire" aria-selected="true">
+                Load the summary
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="driverAndEquipment-tab" data-bs-toggle="tab"
+                data-bs-target="#driverAndEquipment" type="button" role="tab" aria-controls="driverAndEquipment"
+                aria-selected="false">
+                BL
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="routing-tab" data-bs-toggle="tab" data-bs-target="#routing" type="button"
+                role="tab" aria-controls="routing" aria-selected="false">
+                Folder
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="checkCall-tab" data-bs-toggle="tab" data-bs-target="#checkCall" type="button"
+                role="tab" aria-controls="checkCall" aria-selected="false">
+                Stock
+              </button>
+            </li>
+          </ul>
+
+          <!-- ============================== -->
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="sommaire" role="tabpanel" aria-labelledby="sommaire-tab">
+              <div class="row mt-4">
+                <div class="col-md-8 col-12 p-0" style="box-shadow: .5px -.5px 10px #111;">
+                  <div class="box">
+                    <h6 class="text-center mx-5 mt-5">We have auto-populated some details of your shipment, now you can
+                      generate the BL and send it for E-Sign. </h6>
+                    <div class="boxBtnWrap">
+                      <button type="button" class="btn btn-primary boxBtn"> Generate a BOL</button>
+                    </div>
+                    <div class="row my-4">
+                      <div class="col-md-6">
+                        <div class="row p-4">
+                          <div class="col-4 text-center">
+                            <img class="square p-3" src="./images/load-shipped/logo-te.png" alt="">
+
+                          </div>
+                          <div class="col-8 my-auto">
+                            <h6 class="fw-bold">TRANSEXPRESS SA </h6>
+                            <p class="lh-1 small">KM 4.2 Boulevard du Centenaire of the Commune Street No. 5 BP 2449 FAX
+                              33 832 34 32 (221) 33 832 85 86 - 33 832 88 79</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <h6 class="fw-bold"><span class="text-danger ps-4">*</span>#BL: <input type="text"></h6>
+                        <p><span class="fw-bold small">#Charge:</span> CHARGE-10001</p>
+
+                        <p><span class="fw-bold small">#Truck:</span> DK1566</p>
+                        <p><span class="fw-bold small">#Declaration:</span> TRN162</p>
+                        <p><span class="fw-bold small">#Shopping from:</span> 05/12/2022</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle">Shipper</h6>
+                          <div class="p-3">
+                            <h6 class="fw-bold small">HBSN</h6>
+                            <p>2723, avenue Queen City, Cincinnati, OH 45238 </p>
+                            <p class="fw-bold small">Pickup Date : 3/18/2022</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle">Recipient</h6>
+                          <div class="p-3">
+                            <h6 class="fw-bold small">HEBERSENEGAL</h6>
+                            <p> quen city, 2723 QUEEN CITY AVE. APT 9, Cincinatti, OH 45236 </p>
+                            <p class="fw-bold small">Delivery Date : -</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle">Ship</h6>
+                          <div class="p-3">
+                            <h6 class="fw-bold small">Trony L21A</h6>
+                            <p class="fw-bold small">du 3/18/2022 </p>
+                            <p> Provenance : Cincinnati, OH 45238 </p>
+                            <p class="fw-bold small">CNT : 1912</p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-8 mx-3">
+                        <h6 class="fw-bold my-3">Merchandise Details </h6>
+                        <table class="table ">
+                          <tr>
+                            <th>Brand and Number</th>
+                            <th> Weight </th>
+                            <th> Qty </th>
+                            <th> Designation </th>
+                          </tr>
+                            <tr>
+                              <th class="fw-normal"> Riz suprême</th>
+                              <th class="fw-normal">100t</th>
+                              <th class="fw-normal">600</th>
+                              <th class="fw-normal">Bags</th>
+                            </tr>
+                        </table>
+                      </div>
+
+                      <div class="col-md-6 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle"></h6>
+                          <div class="p-3">
+                            <p class="small box p-3 text-justify">The property described above named materials are
+                              properly classified, described,packaged,marked,labled and are in proper condition for
+                              transportation according to the applicable regulations of the department of
+                              transportation. </p>
+                            <p> Drivers name : Omar Diop </p>
+                            <div class="d-flex justify-content-between mt-5">
+                              <p class="fw-bold small">Signature: </p>
+                              <p class="fw-bold small">Date : __________</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle"></h6>
+                          <div class="p-3">
+                            <p class="small box p-3 text-justify">The property described above named materials are
+                              properly classified, described,packaged,marked,labled and are in proper condition for
+                              transportation according to the applicable regulations of the department of
+                              transportation. </p>
+                            <p> Sender's name : SEDIMA </p>
+                            <div class="d-flex justify-content-between mt-5">
+                              <p class="fw-bold small">Signature: </p>
+                              <p class="fw-bold small">Date : __________</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 px-4">
+                        <div class="box">
+                          <h6 class="boxTitle">Instructions form the recipient</h6>
+                          <div class="p-3">
+                            <p class="small box p-3 text-justify">The merchandise described above is recieved in
+                              apparent good condition.</p>
+                            <p> Recipient name : TRANSEXPRESS </p>
+                            <div class="d-flex justify-content-between mt-5">
+                              <p class="fw-bold small">Signature: </p>
+                              <p class="fw-bold small">Date : __________</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="boxBtnWrap">
+                        <button type="button" class="btn btn-primary boxBtn"> Generate a BOL</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4 col-12">
+                  <div class="box box-2">
+                    <h6 class="boxTitle">List of signatories</h6>
+                    <div class="p-3">
+                      <p class="mb-3">You can now send BL document signing requests electronically. We developed this feature to make
+                        the signing process safe and contractless with the COVID-19 crisis in mind.</p>
+                      <div class="small box box-2 p-3 text-justify">
+                        <p>Moussa Diagne(Driver)</p>
+                        <a href="#" class="text-warning text-decoration-underline">Electronic signature request</a>
+                        <p>Email address not added</p>
+                      </div>
+                      <div class="small box box-2 p-3 text-justify">
+                        <p>HBSN (Shipper) </p>
+                        <a href="#" class="text-decoration-underline">Electronic signature request</a>
+                        <p>Email address not added</p>
+                      </div>
+                      <div class="small box box-2 p-3 text-justify">
+                        <p>HEBERSENEGAL (Recipient)</p>
+                        <a href="#" class="text-decoration-underline">Electronic signature request</a>
+                        <p> habib.kindo@hebersenegal.com</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="driverAndEquipment" role="tabpanel" aria-labelledby="driverAndEquipment-tab">
+            ...</div>
+
+          <div class="tab-pane fade" id="routing" role="tabpanel" aria-labelledby="routing-tab">...</div>
+        </div>
+
+        <!-- ===================================== -->
+
+
+      </div>
+    </div>
+  </div>
+  <!-- <div class="footer">
+          <div class="footerLeft">
+            <p>
+              © 2022 CRTansexpress.com, All rights reserved.
+              <a href="#">Terms of use</a> | <a href="#">Privacy Policy</a>
+            </p>
+          </div>
+          <div class="footerRight">
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"
+              ><i class="fa fa-youtube-play" aria-hidden="true"></i
+            ></a>
+          </div>
+        </div> -->
+  </div>
+  </div>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+  <script>
+    /*----- Mobile Toggle Menu -----*/
+    $('.closeBtn, .overlay, .leftMenu ul li a').on('click', function () {
+      $('.toggleNav').removeClass('show');
+      $('.overlay').removeClass('active');
+      jQuery('body').removeClass('bodyActive');
+    });
+    $('.toggleNav').on('click', function () {
+      $('.overlay').addClass('active');
+      jQuery('body').addClass('bodyActive');
+    });
+
+    /*----- Dashboard Mobile Menu ------*/
+    function openNav() {
+      document.getElementById('mobileNav').style.left = '0';
+    }
+    function closeNav() {
+      document.getElementById('mobileNav').style.left = '-100%';
+    }
+  </script>
+</body>
+
+</html>
